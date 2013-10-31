@@ -21,8 +21,9 @@
                 $(this).click(function(e) {
                     var modal_id = $(this).attr('href');
 
-                    $('#lean_overlay').click(function() {
+                    $('#lean_overlay').click(function(e) {
                         close_modal(modal_id);
+                        e.preventDefault();
                     });
 
                     $(o.closeButton).click(function(e) {
