@@ -46,7 +46,7 @@ $("a[rel*=leanModal]").leanModal();
 
 ## Options
 
-In the spirit of keeping things simple, there are only three options involved: vertical position of the modal element in relation to the document body (default is 100px from the top), the overlay opacity (default is 0.5), and a close button option (default null). You can override these defaults by passing your desired values to the function, like so:
+In the spirit of keeping things simple, there are only ~~two~~ three options involved: vertical position of the modal element in relation to the document body (default is 100px from the top), the overlay opacity (default is 0.5), and a close button option (default null). You can override these defaults by passing your desired values to the function, like so:
 
 ```javascript
 $("#trigger_id").leanModal({ top : 200, overlay : 0.4, closeButton: ".modal_close" });
@@ -72,8 +72,8 @@ Simple, and sweet.
 Available under the MIT and GPL licenses. See LICENSE file for more information.
 
 ## Change Log
-*Feb 2012: v1.1 - added a closeButton option. Fixed multiple spawn of #lean_overlay.
-*Oct 2013: v1.2 - added open/close events
+- Feb 2012: v1.1 - added a closeButton option. Fixed multiple spawn of #lean_overlay.
+- Oct 2013: v1.2 - added open/close events
 
 ## Author
 @finelysliced
