@@ -1,5 +1,5 @@
 (function($) {
-    $.fn.extend({ 
+    $.fn.extend({
         leanModal: function(options) {
             var defaults = {
                 top: 100,
@@ -9,7 +9,9 @@
 
             var overlay = $('<div id="lean_overlay"></div>');
 
-            $('body').append(overlay);
+            if (!$("#lean_overlay").length) {
+                $("body").append(overlay);
+            }
 
             options = $.extend(defaults, options);
 
@@ -19,12 +21,12 @@
                 $(this).click(function(e) {
                     var modal_id = $(this).attr('href');
 
-    				$('#lean_overlay').click(function() { 
+    				$('#lean_overlay').click(function() {
                         close_modal(modal_id);
                     });
 
-                    $(o.closeButton).click(function(e) { 
-                        close_modal(modal_id);                    
+                    $(o.closeButton).click(function(e) {
+                        close_modal(modal_id);
                         e.preventDefault();
                     });
 
@@ -32,7 +34,7 @@
         	  	    var modal_width = $(modal_id).outerWidth();
 
         		    $('#lean_overlay').css({
-        		        'display': 'block', 
+        		        'display': 'block',
         		        'opacity': 0
                     });
 
@@ -58,11 +60,11 @@
 
             function close_modal(modal_id) {
         		$('#lean_overlay').fadeOut(200);
-        		
+
         		$(modal_id).css({
         		    'display': 'none'
                 });
-        		
+
         		$(modal_id).trigger('close.leanModal');
 		    }
         }
