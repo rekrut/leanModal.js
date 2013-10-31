@@ -52,6 +52,8 @@
         		});
 
         		$(modal_id).fadeTo(200,1);
+        		
+        		$(modal_id).trigger('open.leanModal');
 
                 e.preventDefault();
                 		
@@ -64,6 +66,8 @@
         		$("#lean_overlay").fadeOut(200);
 
         		$(modal_id).css({ 'display' : 'none' });
+        		
+        		$(modal_id).trigger('close.leanModal');
 			
 			}
     
