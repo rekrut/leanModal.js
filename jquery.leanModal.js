@@ -28,8 +28,9 @@
                      close_modal(modal_id);                    
                 });
                 
-                $(o.closeButton).click(function() { 
+                $(o.closeButton).click(function(e) { 
                      close_modal(modal_id);                    
+                     e.preventDefault();
                 });
                          	
               	var modal_height = $(modal_id).outerHeight();
