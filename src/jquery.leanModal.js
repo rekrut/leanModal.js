@@ -36,7 +36,9 @@
                 var o = options;
 
                 $(this).click(function (e) {
-                    var modal_id = $(this).attr('href');
+                    var $me = $(this),
+                        modal_id = $me.data('targetSelector');
+                    modal_id = modal_id || $me.attr('href');
 
                     $ovlay.click(function (e) {
                         close_modal(modal_id);
