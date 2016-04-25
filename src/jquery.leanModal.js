@@ -18,16 +18,16 @@
 
     $.fn.extend({
         leanModal: function (options) {
-            var defaults = {
+            var $ovlay = $("#lean_overlay"),
+                defaults = {
                 top: 100,
                 overlay: 0.5,
                 closeButton: null
-            }
+            };
 
-            var overlay = $('<div id="lean_overlay"></div>');
-
-            if (!$("#lean_overlay").length) {
-                $("body").append(overlay);
+            if (! $ovlay.length) {
+                $ovlay = $('<div id="lean_overlay"></div>');
+                $("body").append($ovlay);
             }
 
             options = $.extend(defaults, options);
@@ -38,7 +38,7 @@
                 $(this).click(function (e) {
                     var modal_id = $(this).attr('href');
 
-                    $('#lean_overlay').click(function (e) {
+                    $ovlay.click(function (e) {
                         close_modal(modal_id);
                         e.preventDefault();
                     });
@@ -48,15 +48,10 @@
                         e.preventDefault();
                     });
 
-                    var modal_height = $(modal_id).outerHeight(false);
-                    var modal_width = $(modal_id).outerWidth(false);
-
-                    $('#lean_overlay').css({
+                    $ovlay.css({
                         'display': 'block',
                         'opacity': 0
-                    });
-
-                    $('#lean_overlay').fadeTo(200, o.overlay);
+                    }).fadeTo(200, o.overlay);
 
                     $(modal_id).css({
                         'display': 'block',
@@ -64,26 +59,20 @@
                         'opacity': 0,
                         'z-index': 11000,
                         'left': 50 + '%',
-                        'margin-left': -(modal_width / 2) + 'px',
+                        'margin-left': -($(modal_id).outerWidth(false) / 2) + 'px',
                         'top': o.top + 'px'
-                    });
-
-                    $(modal_id).fadeTo(200, 1);
-
-                    $(modal_id).trigger('open.leanModal');
+                    }).fadeTo(200, 1).trigger('open.leanModal');
 
                     e.preventDefault();
                 });
             });
 
             function close_modal(modal_id) {
-                $('#lean_overlay').fadeOut(200);
+                $ovlay.fadeOut(200);
 
                 $(modal_id).css({
                     'display': 'none'
-                });
-
-                $(modal_id).trigger('close.leanModal');
+                }).trigger('close.leanModal');
             }
         }
     });
